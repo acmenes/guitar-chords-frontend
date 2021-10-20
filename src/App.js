@@ -6,6 +6,7 @@ import LogIn from "./LogIn";
 import SignUp from "./SignUp";
 import UserProfile from "./UserProfile";
 import GuitarChord from './GuitarChord.js'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './App.css';
 
