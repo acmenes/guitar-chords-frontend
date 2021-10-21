@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./NavBar";
 import Home from './Home';
-import LogIn from "./LogIn";
-import SignUp from "./SignUp";
-import UserProfile from "./UserProfile";
-import GuitarChord from './GuitarChord.js'
+import LogIn from "./userforms/LogIn";
+import SignUp from "./userforms/SignUp";
+import UserProfile from "./profiles/UserProfile";
+import GuitarChord from './chords/GuitarChord.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './App.css';

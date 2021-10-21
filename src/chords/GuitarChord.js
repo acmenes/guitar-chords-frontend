@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Chord from '@tombatossals/react-chords/lib/Chord'
-import DropDownMenu from "./DropDown";
+import DropDownMenu from "../dropdown/DropDown";
 
 import "./GuitarChord.css"
 import AddToMyChords from "./AddToMyChords";

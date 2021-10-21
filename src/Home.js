@@ -11,12 +11,14 @@ const guitarImage = require("./img/guitar.jpg")
 function Home () {
     const [chords, setChords] = useState([]);
 
-    async function getChords() {
-        let chordRes = await GuitarApi.getAllChords();
-        setChords(chordRes)
-    };
+    useEffect(function getChords(){
+        listChords();
+    }, []);
 
-    getChords();
+    async function listChords() {
+        // let chordRes = await GuitarApi.getAllChords();
+        // setChords(chordRes)
+    };
 
     return (
         <section className="main">
