@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form"
 
+import GuitarApi from "../Api";
+
 import "./DropDown.css"
 
 ///don't keep pick a chord here
-const roots = ["Pick a Chord", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#", "C", "C#",
+const roots = ["Pick a Chord", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#", "Cb", "C", "C#",
                 "Db", "D", "D#", "Eb", "E", "E#", "Fb", "F", "F#"];
 
 const rootsItems = [];
@@ -24,7 +26,6 @@ function DropDownMenu({ setChordName, setChord }) {
    
     const handleChangeRoot = evt => {
         const { roots, value } = evt.target;
-        alert("changed")
         setFormData(formData => ({
             ...formData,
             roots: value,
@@ -33,13 +34,13 @@ function DropDownMenu({ setChordName, setChord }) {
 
     const handleChangeQuality = evt => {
         const { qualities, value } = evt.target;
-        alert("changed")
         setFormData(formData => ({
             ...formData,
             qualities: value,
         }));
     };
 
+    /// it keeps pushing to the array pls stop
     for (const [index, value] of roots.entries()) {
         rootsItems.push(<option value={formData.index}>{value}</option>)
     }
@@ -51,12 +52,22 @@ function DropDownMenu({ setChordName, setChord }) {
     const handleSubmit = evt => {
         evt.preventDefault();
         console.debug(formData)
-        setChordName(`${formData.roots} ${formData.qualities} Chord`);
+        setChordName(`${formData.roots.toLowerCase()}-${formData.qualities} Chord`);
+        // let chord = await GuitarApi.getChord()
+
+        async function getChordFromApi() {
+            alert("calling api")
+            let chord = await GuitarApi.getChord(`${formData.roots.toLowerCase()}-${formData.qualities}`);
+            
+        }
+
+        getChordFromApi()
+        
         setChord({
             ///just a test for now to see how the chords will pop up
             /// this data needs to come from the DB/API
-            frets: [0, 0, 0, 2, 3, 2],
-            fingers: [0, 0, 0, 1, 3, 2],
+            frets: [1, 3, 3, 2, 1, 1],
+            fingers: [1, 3, 4, 2, 1, 1],
             barres: [],
             capo: false
         })
