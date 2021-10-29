@@ -58,18 +58,19 @@ function DropDownMenu({ setChordName, setChord }) {
         async function getChordFromApi() {
             alert("calling api")
             let chord = await GuitarApi.getChord(`${formData.roots.toLowerCase()}-${formData.qualities}`);
-            
+            let chordData = chord.chord[0]
+            console.log(chordData)
         }
 
         getChordFromApi()
-        
+
         setChord({
-            ///just a test for now to see how the chords will pop up
-            /// this data needs to come from the DB/API
-            frets: [1, 3, 3, 2, 1, 1],
-            fingers: [1, 3, 4, 2, 1, 1],
-            barres: [],
-            capo: false
+            // ///just a test for now to see how the chords will pop up
+            // /// this data needs to come from the DB/API
+            // frets: chordData.frets,
+            // fingers: chordData.fingers,
+            // barres: chordData.barres,
+            // capo: chordData.capo
         })
     }
     return(

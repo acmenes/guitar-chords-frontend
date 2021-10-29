@@ -23,24 +23,35 @@ class GuitarApi {
             throw Array.isArray(message) ? message : [message];
             }
     }
+
+    static async getCurrentUser(username) {
+        let res = await this.request(`users/${username}`);
+        return res.user;
+      }
     
     static async getAllChords() {
-        const result = await this.request("/chords")
+        let result = await this.request("/chords")
         return result.chords;
     };
 
     static async getChord(chord_fullname) {
         /// solve CORS problem
-        const result = await this.request(`chords/${chord_fullname}`)
+        let result = await this.request(`chords/${chord_fullname}`)
         // const result = await this.request("chords", { chord_fullname })
         alert("calling the api from api file")
         console.log(result)
         return result;
     }
 
-    static async testFunc() {
-        const result = await axios.get(`${BASE_URL}/chords`)
-        return result.data.rows;
+      /** Get register token */
+    static async signup(data) {
+        let result = await this.request("auth/register", data, "post");
+        return result.token;
+    }
+
+    static async login(data) {
+        let result = await this.request("auth/token", data, "post");
+        return result.token;
     }
 }
 
