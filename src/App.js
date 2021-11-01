@@ -16,14 +16,21 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './App.css';
 
+// Key name for storing token in localStorage for "remember me" re-login
 export const TOKEN_STORAGE_ID = "guitar-token";
 
 function App({ login, signup }) {
-  
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [applicationIds, setApplicationIds] = useState(new Set([]));
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
+
+  console.debug(
+    "App",
+    "infoLoaded=", infoLoaded,
+    "currentUser=", currentUser,
+    "token=", token,
+);
 
   useEffect(function loadUserInfo() {
     console.debug("App useEffect loadUserInfo", "token=", token);
@@ -68,7 +75,6 @@ function App({ login, signup }) {
     try {
       let token = await GuitarApi.signup(signupData);
       setToken(token);
-      alert("you have been signed up")
       return { success: true };
     } catch (errors) {
       console.error("signup failed", errors);
@@ -102,8 +108,6 @@ function App({ login, signup }) {
         </main>
         </UserContext.Provider>
       </BrowserRouter>
-      {/* <Home />
-      <GuitarChord /> */}
     </div>
   );
 }

@@ -60,18 +60,43 @@ function DropDownMenu({ setChordName, setChord }) {
             let chord = await GuitarApi.getChord(`${formData.roots.toLowerCase()}-${formData.qualities}`);
             let chordData = chord.chord[0]
             console.log(chordData)
+
+            /// this can later be turned into a hook?
+            let frets = chordData.frets.split(",")
+            let fretsArray = []
+            for(let x = 0; x < frets.length; x++) {
+                fretsArray.push(parseInt(frets[x]))
+            }
+            
+            let fingers = chordData.fingers.split(",")
+            let fingersArray = []
+            for(let x = 0; x < fingers.length; x++) {
+                fingersArray.push(parseInt(fingers[x]))
+            }
+
+            let barresArray = []
+            if(chordData.barres === "None") {
+                barresArray.push()
+            }
+            else{
+                let barres = chordData.barres.split(" ")
+                for(let x = 0; x < barres.length; x++) {
+                    barresArray.push(parseInt(barres[x]))
+                }
+            }
+            console.log("***********")
+            console.log(barresArray)
+            console.log("***********")
+            
+            setChord({
+                frets: fretsArray,
+                fingers: fingersArray,
+                barres: barresArray,
+                capo: false,
+            })
         }
 
         getChordFromApi()
-
-        setChord({
-            // ///just a test for now to see how the chords will pop up
-            // /// this data needs to come from the DB/API
-            // frets: chordData.frets,
-            // fingers: chordData.fingers,
-            // barres: chordData.barres,
-            // capo: chordData.capo
-        })
     }
     return(
         <div className="dropdown-div">

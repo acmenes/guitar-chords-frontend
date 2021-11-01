@@ -10,11 +10,10 @@ import "./Forms.css"
 function LogIn({ login }) {
     const history = useHistory();
 
-    const [formData, setFormData] = useState([]);
-
-    async function handleSubmit(evt) {
-        evt.preventDefault();
-    }
+    const [formData, setFormData] = useState({
+      username: "",
+      password: "",
+  });
     
     const [formErrors, setFormErrors] = useState([]);
 
@@ -29,10 +28,23 @@ function LogIn({ login }) {
       }
     
       /** Update form data field */
-      function handleChange(evt) {
-        const { name, value } = evt.target;
-        setFormData(l => ({ ...l, [name]: value }));
-      }
+      const handleChangeUserName = evt => {
+        const { username, value } = evt.target;
+        setFormData(formData => ({
+            ...formData,
+            username: value,
+        }));
+        console.log(formData.username)
+    };
+
+    const handleChangePassword = evt => {
+        const { password, value } = evt.target;
+        setFormData(formData => ({
+            ...formData,
+            password: value,
+        }));
+        console.log(formData.password)
+    };
 
 
     return (
@@ -43,13 +55,13 @@ function LogIn({ login }) {
                 <Col xs={7}>
                 <Form.Label htmlForm="username">Your Username</Form.Label>
                     <Form.Control 
-                        onChange={handleChange}
+                        onChange={handleChangeUserName}
                         type="text"
                         placeholder="Your username"></Form.Control>
                     <Form.Text value={formData.username}></Form.Text>
                     <Form.Label htmlForm="password">Password</Form.Label>
                     <Form.Control 
-                        onChange={handleChange} 
+                        onChange={handleChangePassword} 
                         type="password" 
                         placeholder="Your password"></Form.Control>
                     <Form.Text value={formData.password}></Form.Text>

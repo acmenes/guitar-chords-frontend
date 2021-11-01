@@ -19,7 +19,6 @@ function SignUp({ signup }) {
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-        alert("signed up")
         let result = await signup(formData)
         if(result.success) {
             history.push("/chords")
@@ -28,10 +27,21 @@ function SignUp({ signup }) {
         }
     }
 
-    function handleChange(evt) {
-        const { name, value } = evt.target;
-        setFormData(data => ({ ...data, [name]: value }));
-      }
+    const handleChangeUserName = evt => {
+        const { username, value } = evt.target;
+        setFormData(formData => ({
+            ...formData,
+            username: value,
+        }));
+    };
+
+    const handleChangePassword = evt => {
+        const { password, value } = evt.target;
+        setFormData(formData => ({
+            ...formData,
+            password: value,
+        }));
+    };
 
     return (
     <div className="form">
@@ -39,15 +49,15 @@ function SignUp({ signup }) {
         <Form>
             <Row>
                 <Col xs={7}>
-                    <Form.Label htmlForm="username">Your Username</Form.Label>
+                    <Form.Label htmlform="username">Your Username</Form.Label>
                     <Form.Control 
-                        onChange={handleChange}
+                        onChange={handleChangeUserName}
                         type="text"
                         placeholder="Enter your username"></Form.Control>
                     <Form.Text value={formData.username}></Form.Text>
-                    <Form.Label htmlForm="password">Password</Form.Label>
+                    <Form.Label htmlform="password">Password</Form.Label>
                     <Form.Control 
-                        onChange={handleChange} 
+                        onChange={handleChangePassword} 
                         type="password" 
                         placeholder="Pick a password"></Form.Control>
                     <Form.Text value={formData.password}></Form.Text>
