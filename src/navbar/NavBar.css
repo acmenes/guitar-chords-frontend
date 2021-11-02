@@ -17,12 +17,14 @@ nav a {
 nav a.active {
   color: #f0f2f5;
   font-weight: bold;
-  border-bottom: 5px dotted;
   box-sizing: border-box;
+  border-bottom: 3px dashed;
 }
 
 nav a.active:hover {
   color: #f0f2f5 !important;
+  border-bottom: 3px dashed;
+  box-sizing: border-box;
 }
 
 nav a:hover {

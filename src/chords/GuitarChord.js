@@ -2,8 +2,9 @@ import React, { useState } from "react";
 
 import Chord from '@tombatossals/react-chords/lib/Chord'
 import DropDownMenu from "../dropdown/DropDown";
+import Listen from "./Listen";
 
-import "./GuitarChord.css"
+import "./GuitarChord.css";
 import AddToMyChords from "./AddToMyChords";
 
 /// using sample data from the react-chords readme file
@@ -56,6 +57,7 @@ import AddToMyChords from "./AddToMyChords";
           <div className="chord-div">
               <Chord chord={chord} instrument={instrument}/>
               <div className="buttons-div">
+                  <Listen />
                   <AddToMyChords />
               </div>
           </div>

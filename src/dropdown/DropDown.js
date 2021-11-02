@@ -5,6 +5,9 @@ import Form from "react-bootstrap/Form"
 
 import GuitarApi from "../Api";
 
+import Alert from "../common/Alert"
+
+
 import "./DropDown.css"
 
 ///don't keep pick a chord here
@@ -14,7 +17,7 @@ const roots = ["Pick a Chord", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#", "Cb"
 const rootsItems = [];
 
 ///don't keep pick a quality here
-const qualities = ["Pick a quality", "major", "minor", "7th", "maj7", "min7", "augmented", "diminished"];
+const qualities = ["Pick a quality", "major", "minor", "7", "maj7", "min7", "augmented", "diminished"];
 
 const qualitiesItems = [];
 
@@ -52,7 +55,7 @@ function DropDownMenu({ setChordName, setChord }) {
     const handleSubmit = evt => {
         evt.preventDefault();
         console.debug(formData)
-        setChordName(`${formData.roots.toLowerCase()}-${formData.qualities} Chord`);
+        setChordName(`${formData.roots} ${formData.qualities} Chord`);
         // let chord = await GuitarApi.getChord()
 
         async function getChordFromApi() {
@@ -84,10 +87,7 @@ function DropDownMenu({ setChordName, setChord }) {
                     barresArray.push(parseInt(barres[x]))
                 }
             }
-            console.log("***********")
-            console.log(barresArray)
-            console.log("***********")
-            
+
             setChord({
                 frets: fretsArray,
                 fingers: fingersArray,
@@ -97,6 +97,8 @@ function DropDownMenu({ setChordName, setChord }) {
         }
 
         getChordFromApi()
+
+        /// should display an alert if the chord isn't found
     }
     return(
         <div className="dropdown-div">

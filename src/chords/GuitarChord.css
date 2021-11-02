@@ -7,3 +7,37 @@
   border-radius: 10px;
   box-sizing: border-box;
 }
+
+.listen-div {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #c6d8f5;
+  border-radius: 15px;
+}
+
+.progressions-div {
+  margin: 10px;
+  padding: 20px;
+}
+
+.progressions-list {
+  margin: 10px;
+  align-items: center;
+}
+
+.text-center {
+  align-items: center;
+}
+
+.chord-progression {
+  width: 60%;
+  margin: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #c6d8f5;
+}
+
+.button-div {
+  margin: 5px;
+}

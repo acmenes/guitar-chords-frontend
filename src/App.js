@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./navbar/NavBar";
 import Home from './Home';
 import UserContext from "./userforms/UserContext";
+import Progressions from "./chords/Progressions";
 import LogIn from "./userforms/LogIn";
 import SignUp from "./userforms/SignUp";
 import UserProfile from "./profiles/UserProfile";
@@ -91,6 +92,9 @@ function App({ login, signup }) {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path="/progressions">
+              <Progressions />
             </Route>
             <Route exact path="/chords">
               <GuitarChord />

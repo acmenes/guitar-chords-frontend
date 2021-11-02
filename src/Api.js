@@ -27,7 +27,7 @@ class GuitarApi {
     static async getCurrentUser(username) {
         let res = await this.request(`users/${username}`);
         return res.user;
-      }
+      };
     
     static async getAllChords() {
         let result = await this.request("/chords")
@@ -38,7 +38,17 @@ class GuitarApi {
         /// solve CORS problem
         let result = await this.request(`chords/${chord_fullname}`)
         // const result = await this.request("chords", { chord_fullname })
-        alert("calling the api from api file")
+        console.log(result)
+        return result;
+    };
+
+    static async getAllProgressions() {
+        let result = await this.request("progressions")
+        return result.progressions;
+    };
+
+    static async getProgression(id){
+        let result = await this.request(`progressions/${id}`)
         console.log(result)
         return result;
     }
@@ -47,12 +57,12 @@ class GuitarApi {
     static async signup(data) {
         let result = await this.request("auth/register", data, "post");
         return result.token;
-    }
+    };
 
     static async login(data) {
         let result = await this.request("auth/token", data, "post");
         return result.token;
-    }
+    };
 }
 
 export default GuitarApi;
