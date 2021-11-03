@@ -3,7 +3,7 @@ import React from "react";
 import { NavLink, Router } from "react-router-dom";
 import { Navbar, Nav, NavItem } from "reactstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faVolumeUp } from '@fortawesome/free-solid-svg-icons'
+import { faGuitar } from '@fortawesome/free-solid-svg-icons'
 
 import "./NavBar.css"
 
@@ -11,9 +11,9 @@ function NavBar() {
     return (
        <div>
             <Navbar expand="md">
-            <FontAwesomeIcon icon={faVolumeUp}/>
                 <NavLink exact to="/" className="navbar-brand">
                     Guitar Chordly
+                    <FontAwesomeIcon icon={faGuitar}/>
                 </NavLink>
 
                 <Nav className="ml-auto" navbar>

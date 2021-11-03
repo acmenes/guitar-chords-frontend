@@ -55,11 +55,10 @@ function DropDownMenu({ setChordName, setChord }) {
     const handleSubmit = evt => {
         evt.preventDefault();
         console.debug(formData)
-        setChordName(`${formData.roots} ${formData.qualities} Chord`);
+        setChordName(`${formData.roots.toLowerCase()}-${formData.qualities}`);
         // let chord = await GuitarApi.getChord()
 
         async function getChordFromApi() {
-            alert("calling api")
             let chord = await GuitarApi.getChord(`${formData.roots.toLowerCase()}-${formData.qualities}`);
             let chordData = chord.chord[0]
             console.log(chordData)

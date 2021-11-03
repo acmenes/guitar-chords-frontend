@@ -28,6 +28,16 @@ class GuitarApi {
         let res = await this.request(`users/${username}`);
         return res.user;
       };
+
+
+    static async addChordToUserList(username, chord_fullname) {
+        await this.request(`users/${username}/chords/${chord_fullname}`, {}, "post");
+    }
+
+    static async getUserChords(username) {
+        let res = await this.request(`users/${username}/chords`)
+        return res.chordList;
+    }
     
     static async getAllChords() {
         let result = await this.request("/chords")

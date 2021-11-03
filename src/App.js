@@ -23,7 +23,7 @@ export const TOKEN_STORAGE_ID = "guitar-token";
 function App({ login, signup }) {
   const [infoLoaded, setInfoLoaded] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [applicationIds, setApplicationIds] = useState(new Set([]));
+  const [chordList, setChordList] = useState(new Set([]));
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
 
   console.debug(
@@ -44,7 +44,7 @@ function App({ login, signup }) {
           GuitarApi.token = token;
           let currentUser = await GuitarApi.getCurrentUser(username);
           setCurrentUser(currentUser);
-          setApplicationIds(new Set(currentUser.applications));
+          setChordList(new Set(currentUser.chordList));
         } catch (err) {
           console.error("App loadUserInfo: problem loading", err);
           setCurrentUser(null);
@@ -64,7 +64,6 @@ function App({ login, signup }) {
     try {
       let token = await GuitarApi.login(loginData);
       setToken(token);
-      alert("logged in")
       return { success: true };
     } catch (errors) {
       console.error("login failed", errors);
@@ -83,10 +82,20 @@ function App({ login, signup }) {
     }
   };
 
+  function hasAddedChord(chord_fullname) {
+    return chordList.has(chord_fullname);
+  }
+
+  function addChordToUserList(chord_fullname) {
+    if(hasAddedChord(chord_fullname)) return;
+    GuitarApi.addChordToUserList(currentUser[0].username, chord_fullname)
+    setChordList(new Set([...chordList, chord_fullname]))
+  }
+
   return (
     <div className="App">
       <BrowserRouter>
-      <UserContext.Provider value={{ currentUser, setCurrentUser }}>
+      <UserContext.Provider value={{ currentUser, setCurrentUser, hasAddedChord, addChordToUserList }}>
         <NavBar />
         <main>
           <Switch>

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import Chord from '@tombatossals/react-chords/lib/Chord'
 import DropDownMenu from "../dropdown/DropDown";
 import Listen from "./Listen";
 
 import "./GuitarChord.css";
+
+import UserContext from "../userforms/UserContext";
 import AddToMyChords from "./AddToMyChords";
 
 /// using sample data from the react-chords readme file
@@ -28,6 +30,8 @@ import AddToMyChords from "./AddToMyChords";
   // }
 
   function GuitarChord () {
+    const { currentUser, setCurrentUser } = useContext(UserContext);
+    
     const [chord, setChord] = useState({
       frets: [],
       fingers: [],
@@ -58,7 +62,7 @@ import AddToMyChords from "./AddToMyChords";
               <Chord chord={chord} instrument={instrument}/>
               <div className="buttons-div">
                   <Listen />
-                  <AddToMyChords />
+                  <AddToMyChords username={currentUser[0].username} chord={chord} chordName={chordName}/>
               </div>
           </div>
         </div>
