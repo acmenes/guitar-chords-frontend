@@ -11,6 +11,7 @@ import "./UserProfile.css"
 
 function PracticeList({ currentUser }) {
     const [practiceChords, setPracticeChords] = useState([])
+    const [masteredChords, setMasteredChords] = useState([])
 
     useEffect(function getUserChordsFromApi(){
         getUserPracticeChords();
@@ -20,14 +21,19 @@ function PracticeList({ currentUser }) {
     async function getUserPracticeChords() {
         let userChords = await GuitarApi.getUserChords(currentUser[0].username)
         let userChordsArray = []
+        let masteredChordsArray = []
 
         if(userChords.length === 0) setPracticeChords("Start adding some chords to your list!")
     
         for(let x = 0; x < userChords.length; x++) {
-            userChordsArray.push(userChords[x].chord_fullname)
-            console.log(userChords[x].chord_fullname)
+            if(userChords[x].done === false) {
+                userChordsArray.push(userChords[x].chord_fullname)
+            } else {
+                masteredChordsArray.push(userChords[x].chord_fullname)
+            }
         }
         setPracticeChords(userChordsArray)
+        setMasteredChords([])
         console.debug(`practice chords: ${practiceChords}`)
         console.debug(practiceChords.map(practiceChord => (practiceChord)))
     }

@@ -11,11 +11,9 @@ function UserProfile () {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const { hasAddedChord, addChordToUserList } = useContext(UserContext)
 
-    if(currentUser === null) return ("please log in or sign up")
-
     console.debug(currentUser)
-    console.debug(currentUser[0].username)
-    console.debug(currentUser.hasAddedChord)
+
+    if(currentUser === null) return ("please log in or sign up")
 
     /// look up the user's name and all the chords they have in their list- route is already ready
 
@@ -23,7 +21,7 @@ function UserProfile () {
     <div className="user-profile">
         <h1>Profile for {currentUser[0].username} </h1>
         <PracticeList currentUser={currentUser} />
-        <MasterList />
+        <MasterList currentUser={currentUser}/>
         <LogOutButton />
     </div>)
 };

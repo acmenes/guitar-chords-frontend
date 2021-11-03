@@ -8,7 +8,7 @@ import GuitarApi from "../Api";
 
 import "./UserProfile.css"
 
-function MasterList() {
+function MasterList({ currentUser }) {
     const [masteredChords, setMasteredChords] = useState("Get to practicing so you can add to this list!")
 
     /// set it later on so it displays this message if the user doesn't have any mastered chords in their list.
