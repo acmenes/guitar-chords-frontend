@@ -61,7 +61,7 @@ import AddToMyChords from "./AddToMyChords";
           <div className="chord-div">
               <Chord chord={chord} instrument={instrument}/>
               <div className="buttons-div">
-                  <Listen />
+                  {/* <Listen /> */}
                   <AddToMyChords username={currentUser[0].username} chord={chord} chordName={chordName}/>
               </div>
           </div>
