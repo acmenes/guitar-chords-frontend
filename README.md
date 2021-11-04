@@ -19,6 +19,8 @@ More features coming soon!
 
 Guitar Chordly uses an API that I created myself. The data in the API is served by a SQL database, and is accessed by a Node.js app. The database contains extensive information on dozens of guitar chord, and includes information about fingering, frets, strings, roots, and chord qualities.  
 
+API/Backend here: https://github.com/acmenes/guitar-chords
+
 # Tech Stack
 
 -Node.js (backend, API)
