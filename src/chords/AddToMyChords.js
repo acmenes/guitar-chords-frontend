@@ -31,10 +31,10 @@ function AddToMyChords ({ username, chord, chordName }) {
     return (
         <div className="button-div">
             <Form>
-                <Button onCLick={handleAddChord}>Add to my practice list 
-                <FontAwesomeIcon icon={faList}/></Button>
+                {/* <Button onCLick={handleAddChord}>Add to my practice list 
+                <FontAwesomeIcon icon={faList}/></Button> */}
             </Form>
-            <button onClick={handleAddChord}>Temp Add Button</button>
+            <button onClick={handleAddChord}>Add to my practice list <FontAwesomeIcon icon={faList}/></button>
         </div>
     )
 };

@@ -35,7 +35,7 @@ class GuitarApi {
     }
 
     /** allow users to edit their chordslist */
-    static async editoUserChordList(username, chord_fullname) {
+    static async editUserChordList(username, chord_fullname) {
         await this.request(`users/${username}/chords/${chord_fullname}`, {}, "patch");
     }
 

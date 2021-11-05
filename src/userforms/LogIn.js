@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
+import AlertDismissible from "../common/Alert";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Row";
@@ -24,6 +25,7 @@ function LogIn({ login }) {
           history.push("/chords");
         } else {
           setFormErrors(result.errors);
+          return <AlertDismissible />
         }
       }
     
@@ -34,7 +36,6 @@ function LogIn({ login }) {
             ...formData,
             username: value,
         }));
-        console.log(formData.username)
     };
 
     const handleChangePassword = evt => {
@@ -43,7 +44,6 @@ function LogIn({ login }) {
             ...formData,
             password: value,
         }));
-        console.log(formData.password)
     };
 
 

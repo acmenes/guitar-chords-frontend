@@ -11,7 +11,7 @@ import "./UserProfile.css"
 
 function PracticeList({ currentUser }) {
     const [practiceChords, setPracticeChords] = useState([])
-    const [masteredChords, setMasteredChords] = useState([])
+    // const [masteredChords, setMasteredChords] = useState([])
 
     useEffect(function getUserChordsFromApi(){
         getUserPracticeChords();
@@ -26,14 +26,13 @@ function PracticeList({ currentUser }) {
         if(userChords.length === 0) setPracticeChords("Start adding some chords to your list!")
     
         for(let x = 0; x < userChords.length; x++) {
+            console.debug(userChords[x].done)
             if(userChords[x].done === false) {
-                userChordsArray.push(userChords[x].chord_fullname)
-            } else {
-                masteredChordsArray.push(userChords[x].chord_fullname)
+                userChordsArray.push(userChords[x])
             }
         }
         setPracticeChords(userChordsArray)
-        setMasteredChords([])
+        // setMasteredChords([masteredChordsArray])
         console.debug(`practice chords: ${practiceChords}`)
         console.debug(practiceChords.map(practiceChord => (practiceChord)))
     }
@@ -46,7 +45,8 @@ function PracticeList({ currentUser }) {
                     <div className="practice-list">
                     {practiceChords.map(practiceChord =>(
                         <PracticeListChord
-                            chord_fullname={practiceChord}
+                            chord_fullname={practiceChord.chord_fullname}
+                            done={practiceChord.done}
                         />
                     ))}
                     </div>

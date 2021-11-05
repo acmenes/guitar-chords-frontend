@@ -5,10 +5,12 @@ import Home from './Home';
 import UserContext from "./userforms/UserContext";
 import Progressions from "./chords/Progressions";
 import LogIn from "./userforms/LogIn";
+import LogOut from "./userforms/LogOut";
 import SignUp from "./userforms/SignUp";
 import UserProfile from "./profiles/UserProfile";
 import GuitarChord from './chords/GuitarChord.js'
 import useLocalStorage from "./hooks/useLocalStorage";
+import LoadingSpinner from "./common/LoadingSpinner";
 import GuitarApi from "./Api";
 
 import jwt from "jsonwebtoken";
@@ -60,6 +62,18 @@ function App({ login, signup }) {
     getCurrentUser();
   }, [token]);
 
+  /** logs out a user */
+  function logout() {
+    setToken(null);
+    setCurrentUser(null);
+    setChordList(new Set());
+  }
+
+  if (!infoLoaded) {
+    return <LoadingSpinner />
+  }
+
+  /** logs in a user */
   async function login(loginData) {
     try {
       let token = await GuitarApi.login(loginData);
@@ -71,6 +85,7 @@ function App({ login, signup }) {
     }
   };
 
+  /** signs up a new user */
   async function signup(signupData) {
     try {
       let token = await GuitarApi.signup(signupData);
@@ -96,7 +111,7 @@ function App({ login, signup }) {
     <div className="App">
       <BrowserRouter>
       <UserContext.Provider value={{ currentUser, setCurrentUser, hasAddedChord, addChordToUserList }}>
-        <NavBar />
+        <NavBar currentUser={currentUser} />
         <main>
           <Switch>
             <Route exact path="/">
@@ -116,6 +131,9 @@ function App({ login, signup }) {
             </Route>
             <Route exact path="/profile">
               <UserProfile />
+            </Route>
+            <Route exact path="/logout">
+                <LogOut logout={logout} />
             </Route>
           </Switch>
         </main>

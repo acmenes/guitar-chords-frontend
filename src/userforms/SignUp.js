@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Row";
+import AlertDismissible from "../common/Alert";
 
 import "./Forms.css"
 
@@ -24,6 +25,7 @@ function SignUp({ signup }) {
             history.push("/chords")
         } else {
             setFormErrors(result.errors)
+            return <AlertDismissible />
         }
     }
 

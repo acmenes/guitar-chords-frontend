@@ -11,13 +11,13 @@ import Alert from "../common/Alert"
 import "./DropDown.css"
 
 ///don't keep pick a chord here
-const roots = ["Pick a Chord", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#", "Cb", "C", "C#",
+const roots = ["--Pick a chord--", "G", "G#", "Ab", "A", "A#", "Bb", "B", "B#", "Cb", "C", "C#",
                 "Db", "D", "D#", "Eb", "E", "E#", "Fb", "F", "F#"];
 
 const rootsItems = [];
 
 ///don't keep pick a quality here
-const qualities = ["Pick a quality", "major", "minor", "7", "maj7", "min7", "augmented", "diminished"];
+const qualities = ["--Pick a quality--", "major", "minor", "7", "maj7", "min7", "augmented", "diminished"];
 
 const qualitiesItems = [];
 
@@ -43,7 +43,7 @@ function DropDownMenu({ setChordName, setChord }) {
         }));
     };
 
-    /// it keeps pushing to the array pls stop
+    /// for some reason, each one of these loops through twice 
     for (const [index, value] of roots.entries()) {
         rootsItems.push(<option value={formData.index}>{value}</option>)
     }
