@@ -10,33 +10,7 @@ import MasterListChord from "./MasterListChord";
 
 import "./UserProfile.css"
 
-function MasterList({ currentUser }) {
-    const [masteredChords, setMasteredChords] = useState("Get to practicing so you can add to this list!")
-
-    useEffect(function getUserChordsFromApi(){
-        getUserMasteredChords();
-    }, []);
-
-
-    async function getUserMasteredChords() {
-        let userChords = await GuitarApi.getUserChords(currentUser[0].username)
-        let userChordsArray = []
-        let masteredChordsArray = []
-
-        if(userChords.length === 0) setMasteredChords("Get to practicing!")
-    
-        for(let x = 0; x < userChords.length; x++) {
-            console.debug(userChords[x].done)
-            if(userChords[x].done === true) {
-                masteredChordsArray.push(userChords[x].chord_fullname)
-                console.debug(userChords[x])
-            } 
-        }
-        console.debug(` mastered chords: ${masteredChordsArray}`)
-        setMasteredChords(masteredChordsArray)
-        console.debug(masteredChords)
-    }
-    
+function MasterList({ currentUser, masteredChords }) {    
     return (
         <div className="list-div">
             <Card>

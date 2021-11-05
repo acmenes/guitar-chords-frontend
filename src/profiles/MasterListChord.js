@@ -7,7 +7,7 @@ import UserContext from "../userforms/UserContext";
 
 import GuitarApi from "../Api";
 
-function MasterListChord({ chord_fullname, done }) {
+function MasterListChord({ chord_fullname, done}) {
     
     return (
         <div className="masterlist-list-chord">
