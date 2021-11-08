@@ -9,7 +9,7 @@ import PracticeListChord from "./PracticeListChord";
 
 import "./UserProfile.css"
 
-function PracticeList({ currentUser, practiceChords, updateChordList }) {
+function PracticeList({ currentUser, practiceChords }) {
     return (
         <div className="list-div">
             <Card className="list-card">
@@ -20,7 +20,6 @@ function PracticeList({ currentUser, practiceChords, updateChordList }) {
                         <PracticeListChord
                             chord_fullname={practiceChord.chord_fullname}
                             done={practiceChord.done}
-                            updateChordList={updateChordList}
                         />
                     ))}
                     </div>

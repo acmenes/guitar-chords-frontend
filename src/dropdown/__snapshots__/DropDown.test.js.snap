@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="dropdown-div"
+  >
+    <form
+      class=""
+    >
+      <label
+        class="form-option form-label"
+        for="root-select"
+      >
+        Select Your Root
+      </label>
+      <select
+        class="form-select"
+      >
+        <option>
+          --Pick a chord--
+        </option>
+        <option>
+          G
+        </option>
+        <option>
+          G#
+        </option>
+        <option>
+          Ab
+        </option>
+        <option>
+          A
+        </option>
+        <option>
+          A#
+        </option>
+        <option>
+          Bb
+        </option>
+        <option>
+          B
+        </option>
+        <option>
+          B#
+        </option>
+        <option>
+          Cb
+        </option>
+        <option>
+          C
+        </option>
+        <option>
+          C#
+        </option>
+        <option>
+          Db
+        </option>
+        <option>
+          D
+        </option>
+        <option>
+          D#
+        </option>
+        <option>
+          Eb
+        </option>
+        <option>
+          E
+        </option>
+        <option>
+          E#
+        </option>
+        <option>
+          Fb
+        </option>
+        <option>
+          F
+        </option>
+        <option>
+          F#
+        </option>
+      </select>
+    </form>
+    <form
+      class=""
+    >
+      <label
+        class="form-option form-label"
+        for="quality-select"
+      >
+        Select Chord Type
+      </label>
+      <select
+        class="form-select"
+      >
+        <option>
+          --Pick a quality--
+        </option>
+        <option>
+          major
+        </option>
+        <option>
+          minor
+        </option>
+        <option>
+          7
+        </option>
+        <option>
+          maj7
+        </option>
+        <option>
+          min7
+        </option>
+        <option>
+          augmented
+        </option>
+        <option>
+          diminished
+        </option>
+      </select>
+    </form>
+  </div>
+</DocumentFragment>
+`;

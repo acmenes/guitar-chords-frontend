@@ -1,30 +1,25 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
-import Home from './Home';
-import UserProfile from './profiles/UserProfile';
-import LogIn from './userforms/LogIn';
-import SignUp from './userforms/SignUp';
+import React from "react";
+import { render } from "@testing-library/react";
+import App from "./App";
+import Home from "./Home";
+import LogIn from "./userforms/LogIn";
+import SignUp from "./userforms/SignUp";
+import UserProfile from "./profiles/UserProfile";
+import NavBar from "./navbar/NavBar";
+import GuitarChord from "./chords/GuitarChord";
 
-test('renders home link', () => {
+it("renders without crashing", function() {
+  render(<App />);
+});
+
+it("renders the home page", function(){
   render(<Home />);
-  const linkElement = screen.getByText(/home/i);
-  expect(linkElement).toBeInTheDocument();
 });
 
-test('renders signup link', () => {
-  render(<SignUp />);
-  const linkElement = screen.getByText(/signup/i);
-  expect(linkElement).toBeInTheDocument();
-});
-
-test('renders login link', () => {
+it("renders the login page", function(){
   render(<LogIn />);
-  const linkElement = screen.getByText(/login/i);
-  expect(linkElement).toBeInTheDocument();
-});
+})
 
-test('renders profile link', () => {
-  render(<UserProfile />);
-  const linkElement = screen.getByText(/profile/i);
-  expect(linkElement).toBeInTheDocument();
+it("renders the signup page", function(){
+  render(<SignUp />);
 });

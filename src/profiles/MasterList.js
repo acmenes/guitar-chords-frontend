@@ -10,7 +10,7 @@ import MasterListChord from "./MasterListChord";
 
 import "./UserProfile.css"
 
-function MasterList({ currentUser, masteredChords, updateChordList }) {    
+function MasterList({ currentUser, masteredChords }) {    
     return (
         <div className="list-div">
             <Card>
@@ -20,7 +20,6 @@ function MasterList({ currentUser, masteredChords, updateChordList }) {
                         <MasterListChord
                             chord_fullname={masteredChord.chord_fullname}
                             done={masteredChord.done}
-                            updateChordList={updateChordList}
                         />
                     ))}
                 </CardBody>
