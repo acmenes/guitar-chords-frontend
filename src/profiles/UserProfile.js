@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import LogOutButton from "./LogOutButton";
 import UserContext from "../userforms/UserContext";
 import PracticeList from "./PracticeList";
 import MasterList from "./MasterList";
@@ -26,6 +25,7 @@ function UserProfile () {
     }
 
     console.debug(currentUser)
+    if(currentUser === null) return "Please log in or sign up."
 
     async function getUserPracticeChords() {
         let userChords = await GuitarApi.getUserChords(currentUser[0].username)
