@@ -7,11 +7,11 @@ import UserContext from "../userforms/UserContext";
 
 import GuitarApi from "../Api";
 
-function MasterListChord({ chord_fullname, done}) {
+function MasterListChord({ chord_fullname, done, updateChordList }) {
     
     return (
         <div className="masterlist-list-chord">
-            <li>{chord_fullname} <FontAwesomeIcon icon={faCheck}/></li>
+            <li>{chord_fullname}</li>
         </div>
     )
 }

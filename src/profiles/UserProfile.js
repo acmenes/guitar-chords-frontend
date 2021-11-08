@@ -15,10 +15,15 @@ function UserProfile () {
     const { hasAddedChord, addChordToUserList } = useContext(UserContext)
     const [practiceChords, setPracticeChords] = useState([])
     const [masteredChords, setMasteredChords] = useState([])
+    const [updateChordList, setUpdateChordList] = useState(false)
 
     useEffect(function getUserChordsFromApi(){
         getUserPracticeChords();
     }, []);
+
+    if(updateChordList === true) {
+        getUserPracticeChords();
+    }
 
     console.debug(currentUser)
 
@@ -40,7 +45,6 @@ function UserProfile () {
         setPracticeChords(practiceChordsArray)
         setMasteredChords(masteredChordsArray)
         console.debug(`practice chords: ${practiceChords}`)
-        console.debug(practiceChords.map(practiceChord => (practiceChord)))
     }
 
     if(currentUser === null) return ("please log in or sign up")
@@ -48,8 +52,14 @@ function UserProfile () {
     return (
     <div className="user-profile">
         <h1>Profile for {currentUser[0].username} </h1>
-        <PracticeList currentUser={currentUser} practiceChords={practiceChords} />
-        <MasterList currentUser={currentUser} masteredChords={masteredChords}/>
+        <PracticeList 
+            currentUser={currentUser} 
+            practiceChords={practiceChords}
+            updateChordList={updateChordList} />
+        <MasterList 
+            currentUser={currentUser} 
+            masteredChords={masteredChords}
+            updateChordList={updateChordList} />
     </div>)
 };
 
