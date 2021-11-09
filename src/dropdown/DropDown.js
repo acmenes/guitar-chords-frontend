@@ -32,9 +32,10 @@ const roots = [
   "Fb",
   "F",
   "F#",
+  "Gb"
 ];
 
-const rootsItems = [];
+let rootsItems = [];
 
 ///don't keep pick a quality here
 const qualities = [
@@ -46,9 +47,11 @@ const qualities = [
   "min7",
   "augmented",
   "diminished",
+  "sus2",
+  "sus4"
 ];
 
-const qualitiesItems = [];
+let qualitiesItems = [];
 
 function DropDownMenu({ setChordName, setChord }) {
   const [formData, setFormData] = useState({
@@ -74,6 +77,8 @@ function DropDownMenu({ setChordName, setChord }) {
     submit(formData.roots, value);
   };
 
+  rootsItems = [];
+  qualitiesItems = [];
   /// for some reason, each one of these loops through twice
   for (const [index, value] of roots.entries()) {
     rootsItems.push(<option value={formData.index}>{value}</option>);
