@@ -31,8 +31,8 @@ I also used this library to help render the chords in React: https://github.com/
 
 # Where is it deployed?
 
-Coming soon!
+https://quickest-mark.surge.sh/
 
 # Testing
 
-Coming soon!
+Run npm test in your terminal. Tests are included to test the dropdown functionality, as well as the functionality to load routes such as sign-up, log-in, and the homepage. More tests will be added over time in order to craete a comprehensive test suite.
