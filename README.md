@@ -31,7 +31,7 @@ I also used this library to help render the chords in React: https://github.com/
 
 # Where is it deployed?
 
-https://quickest-mark.surge.sh/
+https://slow-vegetable.surge.sh/
 
 # Testing
 
